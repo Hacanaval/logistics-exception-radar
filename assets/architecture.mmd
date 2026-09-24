@@ -1,0 +1,27 @@
+graph TD
+    subgraph DataPipeline
+        Scheduler[Daily Scheduler] --> Jobs[Cloud Run Jobs]
+        Jobs --> Source[(Operational data warehouse)]
+        Jobs --> Cache[(Parquet cache in object storage)]
+        Jobs --> Delta[Incremental delta job]
+    end
+
+    subgraph DecisionLayer
+        Cache --> API[FastAPI on Cloud Run]
+        API --> Rules[Deterministic rules]
+        API --> LLM[Lightweight LLM for mixed cases]
+        Rules --> Verdict[Verdict + explanation]
+        LLM --> Verdict
+    end
+
+    subgraph UserLayer
+        Verdict --> Web[Next.js web app]
+        Verdict --> Report[Daily report view]
+        Verdict --> Radar[Radar alert grid]
+    end
+
+    subgraph Observability
+        Jobs --> Notify[Chat notifications]
+        Notify --> Retry[Exponential backoff retry]
+        Retry --> DeadLetter[Dead-letter table]
+    end

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200, initial-scale=1.0">
+  <title>Logistics Exception Radar — Dashboard Mockup</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 32px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    header {
+      background: #0f172a;
+      color: #fff;
+      padding: 24px 32px;
+    }
+    header h1 { margin: 0; font-size: 22px; font-weight: 600; }
+    header p { margin: 6px 0 0; opacity: 0.8; font-size: 14px; }
+    .tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid #e2e8f0;
+      background: #f8fafc;
+    }
+    .tab {
+      padding: 14px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #64748b;
+      cursor: pointer;
+    }
+    .tab.active { color: #0f172a; border-bottom: 2px solid #0f172a; background: #fff; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 24px 32px;
+      background: #f8fafc;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .card .label { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+    .card .value { font-size: 26px; font-weight: 700; margin-top: 6px; }
+    .card .delta { font-size: 13px; margin-top: 4px; color: #16a34a; }
+    .card .delta.red { color: #dc2626; }
+    .section { padding: 24px 32px; }
+    .section h2 { margin: 0 0 16px; font-size: 16px; font-weight: 600; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th, td { text-align: left; padding: 12px; border-bottom: 1px solid #e2e8f0; }
+    th { color: #64748b; font-weight: 500; background: #f8fafc; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+    .real { background: #fee2e2; color: #991b1b; }
+    .data { background: #dbeafe; color: #1e40af; }
+    .mixed { background: #fef3c7; color: #92400e; }
+    .search { padding: 20px 32px; display: flex; gap: 12px; border-bottom: 1px solid #e2e8f0; }
+    .search input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .search button {
+      padding: 10px 18px;
+      background: #0f172a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Logistics Exception Radar</h1>
+      <p>Pre-dispatch incident triage and investigation support — September 24, 2026</p>
+    </header>
+
+    <div class="tabs">
+      <div class="tab">Single shipment lookup</div>
+      <div class="tab active">Daily investigator report</div>
+      <div class="tab">Radar alerts</div>
+    </div>
+
+    <div class="stats">
+      <div class="card">
+        <div class="label">Open incidents</div>
+        <div class="value">3,184</div>
+        <div class="delta red">+124 vs yesterday</div>
+      </div>
+      <div class="card">
+        <div class="label">Likely data errors</div>
+        <div class="value">1,472</div>
+        <div class="delta">46.2% of open</div>
+      </div>
+      <div class="card">
+        <div class="label">Requires investigation</div>
+        <div class="value">612</div>
+        <div class="delta">19.2% of open</div>
+      </div>
+      <div class="card">
+        <div class="label">Avg closure time</div>
+        <div class="value">44 h</div>
+        <div class="delta">-8 h vs last month</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Pre-classified incidents for today</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Shipment</th>
+            <th>Depot</th>
+            <th>Last scan</th>
+            <th>Verdict</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SH-9011029</td>
+            <td>Portville North</td>
+            <td>2 hours ago — route hub</td>
+            <td><span class="badge data">Likely data error</span></td>
+            <td>Scan was recorded under wrong route number</td>
+          </tr>
+          <tr>
+            <td>SH-9011133</td>
+            <td>Riverside</td>
+            <td>4 days ago — depot exit</td>
+            <td><span class="badge real">Likely real incident</span></td>
+            <td>No intermediate scans; outlier for this route</td>
+          </tr>
+          <tr>
+            <td>SH-9011207</td>
+            <td>Lakeview</td>
+            <td>1 day ago — in transit</td>
+            <td><span class="badge mixed">Mixed signals</span></td>
+            <td>One scan shows delivery, another shows it returned</td>
+          </tr>
+          <tr>
+            <td>SH-9011355</td>
+            <td>Portville Downtown</td>
+            <td>6 hours ago — delivery attempt</td>
+            <td><span class="badge data">Likely data error</span></td>
+            <td>Successful attempt registered in another event</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
