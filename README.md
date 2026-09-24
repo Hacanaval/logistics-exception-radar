@@ -81,7 +81,7 @@ graph TD
 
 ## Key results
 
-- Switching from on-demand warehouse queries to a daily Parquet cache reduced data-query cost by roughly 97 percent.
+- Switching from on-demand warehouse queries to a daily Parquet cache reduced data-query cost by roughly 95 percent.
 - The radar evaluates hundreds of thousands of active deliveries per batch.
 - A taxonomy fix removed tens of thousands of false-positive alerts by preventing raw signals from overriding the final deterministic verdict.
 - Local evaluation reaches around 80 shipment checks per second for deterministic cases.
